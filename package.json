@@ -14,10 +14,11 @@
     "watch:css": "watch 'npm run build:css' frontend/styles/",
     "build:html": "jade frontend/html/index.jade -o frontend/_dist",
     "watch:html": "watch 'npm run build:html' frontend/html",
-    "build": "npm run build:js && npm run build:css && npm run build:html",
+    "build": "npm run build:css && npm run build:html",
     "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'",
     "serve": "serve frontend/_dist",
-    "start": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css'"
+    "start": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css'",
+    "frontend:upload": "npm run build && node scripts/s3_upload.js"
   },
   "keywords": [
     "music",
@@ -30,7 +31,10 @@
     "watch": "latest",
     "parallelshell": "latest",
     "serve": "latest",
-    "node-sass": "latest"
+    "node-sass": "latest",
+    "s3": "latest",
+    "aws-sdk": "2.3.7",
+    "lodash": "latest"
   },
   "author": "Peter R Morris",
   "license": "ISC"
