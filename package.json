@@ -8,16 +8,16 @@
   },
   "scripts": {
     "test": "test",
-    "build:js": "browserify assets/scripts/main.js > dist/main.js",
-    "watch:js": "watch 'npm run build:js' assets/scripts/",
+    "build:js": "browserify frontend/scripts/index.js > frontend/_dist/index.js",
+    "watch:js": "watch 'npm run build:js' frontend/scripts/",
     "build:css": "node-sass frontend/styles/index.scss -o frontend/_dist",
     "watch:css": "watch 'npm run build:css' frontend/styles/",
     "build:html": "jade frontend/html/index.jade -o frontend/_dist",
     "watch:html": "watch 'npm run build:html' frontend/html",
-    "build": "npm run build:css && npm run build:html",
+    "build": "npm run build:css && npm run build:html && npm run build:js",
     "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'",
     "serve": "serve frontend/_dist",
-    "start": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css'",
+    "start": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js'",
     "frontend:upload": "npm run build && node scripts/s3_upload.js"
   },
   "keywords": [
