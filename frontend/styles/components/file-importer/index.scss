@@ -1,0 +1,13 @@
+.file-importer {
+  padding: 50px;
+  height: 100%;
+
+  cursor: pointer;
+
+  border: 3px dashed #ccc;
+  border-radius: 10px;
+
+  &:hover {
+    border-color: #aaa;
+  }
+}
