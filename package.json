@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "test",
-    "build:js": "browserify frontend/scripts/index.js > frontend/_dist/index.js",
+    "test:backend": "cd backend && mix test",
+    "build:js": "browserify frontend/scripts/index.es6 -o frontend/_dist/index.js -t [ babelify --presets [ env react ] ]",
     "watch:js": "watch 'npm run build:js' frontend/scripts/",
     "build:css": "node-sass frontend/styles/index.scss -o frontend/_dist",
     "watch:css": "watch 'npm run build:css' frontend/styles/",
@@ -17,7 +18,8 @@
     "build": "npm run build:css && npm run build:html && npm run build:js",
     "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'",
     "serve": "serve frontend/_dist",
-    "start": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js'",
+    "start:backend": "cd backend && mix phx.server",
+    "start": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js' 'npm run start:backend'",
     "frontend:upload": "npm run build && node scripts/s3_upload.js"
   },
   "keywords": [
@@ -26,16 +28,26 @@
     "s3"
   ],
   "devDependencies": {
-    "jade": "latest",
-    "browserify": "latest",
-    "watch": "latest",
-    "parallelshell": "latest",
-    "serve": "latest",
-    "node-sass": "latest",
-    "s3": "latest",
     "aws-sdk": "2.3.7",
-    "lodash": "latest"
+    "babelify": "latest",
+    "browserify": "latest",
+    "jade": "latest",
+    "lodash": "latest",
+    "node-sass": "latest",
+    "parallelshell": "latest",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "redux": "^3.7.2",
+    "s3": "latest",
+    "serve": "latest",
+    "watch": "latest"
   },
   "author": "Peter R Morris",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "react-redux": "^5.0.6"
+  }
 }
