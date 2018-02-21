@@ -42,7 +42,7 @@ import { connect } from 'react-redux';
   }
 
   renderUploadList() {
-    const listItems = this.props.uploadQueue.map((d) => <li key={d.id}>FILE: {d.name}</li>);
+    const listItems = this.props.uploadQueue.map((d) => <li key={d.id} data-file-type={d.type}>FILE: {d.name}</li>);
 
     return (
       <ul className='upload-list'>

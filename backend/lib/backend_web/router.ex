@@ -28,5 +28,6 @@ defmodule BackendWeb.Router do
     pipe_through :api
 
     resources "/test", TestController
+    post "/upload-signature", UploadSignatureController, :create
   end
 end
