@@ -1,3 +1,5 @@
-module.exports = {
-  backend: 'http://localhost:4000'
+const backend = 'http://localhost:4000';
+
+export {
+  backend
 };

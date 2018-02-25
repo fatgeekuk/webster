@@ -2,9 +2,16 @@ const fs = require('fs');
 const _ = require('lodash');
 
 var AWS = require('aws-sdk');
-var s3 = new AWS.S3();
+var region =  process.env.S3_REGION;
+var endpoint = 'https://s3.' + region + '.amazonaws.com';
 
-const bucketName = process.env.AWS_BUCKET;
+var s3 = new AWS.S3({
+  endpoint: endpoint,
+  region: region,
+  signatureVersion: 'v4'
+});
+
+const bucketName = process.env.S3_CODE_BUCKET;
 
 const path = 'frontend/_dist';
 
@@ -31,6 +38,7 @@ fs.readdir(path, (err, files) => {
       s3.putObject(params, (err, data) => {
         if (err) {
           console.log(file, ' error, failed to upload');
+          console.log(err);
         } else {
           console.log(file, ' success, upload complete');
         }

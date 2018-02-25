@@ -19,6 +19,7 @@ defmodule BackendWeb.Endpoint do
     plug Phoenix.CodeReloader
   end
 
+  plug CORSPlug, origin: ["http://localhost:5000"]
   plug Plug.RequestId
   plug Plug.Logger
 

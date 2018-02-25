@@ -40,7 +40,8 @@
     "redux": "^3.7.2",
     "s3": "latest",
     "serve": "latest",
-    "watch": "latest"
+    "watch": "latest",
+    "jquery": "latest"
   },
   "author": "Peter R Morris",
   "license": "ISC",
@@ -48,6 +49,7 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "react-redux": "^5.0.6"
+    "react-redux": "^5.0.6",
+    "moment": "latest"
   }
 }
