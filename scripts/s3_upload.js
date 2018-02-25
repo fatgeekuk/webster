@@ -2,7 +2,7 @@ const fs = require('fs');
 const _ = require('lodash');
 
 var AWS = require('aws-sdk');
-var region =  process.env.AWS_REGION;
+var region =  process.env.S3_REGION;
 var endpoint = 'https://s3.' + region + '.amazonaws.com';
 
 var s3 = new AWS.S3({
@@ -11,7 +11,7 @@ var s3 = new AWS.S3({
   signatureVersion: 'v4'
 });
 
-const bucketName = process.env.AWS_BUCKET;
+const bucketName = process.env.S3_CODE_BUCKET;
 
 const path = 'frontend/_dist';
 
