@@ -1,14 +1,19 @@
 const fs = require('fs');
 const _ = require('lodash');
 
-var AWS = require('aws-sdk');
-var region =  process.env.S3_REGION;
-var endpoint = 'https://s3.' + region + '.amazonaws.com';
+const AWS = require('aws-sdk');
+const region =  process.env.S3_REGION;
+const accessKey = process.env.CODE_ACCESS_KEY_ID;
+const accessSecret = process.env.CODE_SECRET_ACCESS_KEY;
 
-var s3 = new AWS.S3({
+const endpoint = 'https://s3.' + region + '.amazonaws.com';
+
+const s3 = new AWS.S3({
   endpoint: endpoint,
   region: region,
-  signatureVersion: 'v4'
+  signatureVersion: 'v4',
+  accessKeyId: accessKey,
+  secretAccessKey: accessSecret
 });
 
 const bucketName = process.env.S3_CODE_BUCKET;

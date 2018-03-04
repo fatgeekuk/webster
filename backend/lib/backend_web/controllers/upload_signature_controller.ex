@@ -46,11 +46,11 @@ defmodule BackendWeb.UploadSignatureController do
   end
 
   defp aws_secret do
-    System.get_env("AWS_SECRET_ACCESS_KEY")
+    System.get_env("MEDIA_SECRET_ACCESS_KEY")
   end
   
   defp aws_access_key do
-    System.get_env("AWS_ACCESS_KEY_ID")
+    System.get_env("MEDIA_ACCESS_KEY_ID")
   end
   
   defp aws_bucket do
@@ -92,7 +92,7 @@ defmodule BackendWeb.UploadSignatureController do
 
     signing_key
   end
-
+  
   defp hmac_sha1(secret, msg) do
     :crypto.hmac(:sha256, secret, msg)
     |> Base.encode16(case: :lower)

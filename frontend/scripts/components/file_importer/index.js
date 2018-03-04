@@ -1,8 +1,9 @@
 import React from 'react';
 import { fileReceived } from '../../events/drag-drop';
 import { connect } from 'react-redux';
+import FileImport from '../file_import';
 
-;class FileImporter extends React.Component {
+class FileImporter extends React.Component {
   constructor(props) {
     super(props);
 
@@ -42,8 +43,14 @@ import { connect } from 'react-redux';
   }
 
   renderUploadList() {
-    const listItems = this.props.uploadQueue.map((d) => <li key={d.id} data-file-type={d.type}>FILE: {d.name}</li>);
-
+    console.log('FileUpload', this.props);
+    let listItems = [];
+    for (var key in this.props.uploadQueue) {
+      const upload = this.props.uploadQueue[key];
+      console.log('loop', upload);
+      listItems[listItems.length] = (<FileImport key={upload.id} id={upload.id} file={upload.file} progress={upload.progress}/>);
+    };
+console.log('list', listItems);
     return (
       <ul className='upload-list'>
         {listItems}
