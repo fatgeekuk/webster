@@ -1,23 +1,24 @@
 import { uuidv4 } from '../utils';
 import { delay, forEach } from 'lodash';
-import { uploadTokenReceived } from '../events/file-upload'
+import { uploadTokenReceived, uploadProgressReceived } from '../events/file-upload'
 import { backend } from '../config';
 import { store } from '../utils';
 
 import $ from 'jquery';
 
 class FileUpload {
-  constructor(file) {
+  constructor(file, id=uuidv4(), progress = 0.0) {
     this.file = file;
-    this.id = uuidv4();
+    this.id = id;
     this.name = file.name;
     this.type = file.type;
+    this.progress = progress;
 
-    delay(this.requestUploadToken.bind(this), 10);
+    if (progress == 0.0)
+      delay(this.requestUploadToken.bind(this), 10);
   }
 
   receiveUploadToken(key) {
-    console.log('dasdasd')
     this.uploadKey = key;
   }
 
@@ -32,7 +33,6 @@ class FileUpload {
         mimetype: this.type
       },
       success: function (response) {
-        console.log('response', response);
         me.response = response;
     
         me.uploadFile.bind(me)();
@@ -40,8 +40,13 @@ class FileUpload {
     })
   }
 
+  updateProgress(newProgress) {
+    return new FileUpload(this.file, this.id, newProgress);
+  }
+
   uploadFile() {
     let formData = new FormData();
+    let id=this.id;
 
     forEach(this.response.params, function(value, key){ 
       formData.append(key, value);
@@ -59,6 +64,8 @@ class FileUpload {
               var percentComplete = evt.loaded / evt.total;
               //Do something with upload progress here
               console.log('progress!', percentComplete);
+              console.log('storis',store);
+              store.dispatch(uploadProgressReceived(id, percentComplete));
           }
         }, false);
 
@@ -67,6 +74,8 @@ class FileUpload {
               var percentComplete = evt.loaded / evt.total;
               //Do something with download progress
               console.log('progress!', percentComplete);
+              console.log('storis',store);
+              store.dispatch(uploadProgressReceived(id, percentComplete));
           }
         }, false);
 
