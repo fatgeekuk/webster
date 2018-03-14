@@ -20,7 +20,10 @@ jobs:
 
     steps:
       - checkout
-
+      - run: cd backend && mix local.hex --force  # install Hex locally (without prompt)
+      - run: cd backend && mix local.rebar --force  # fetch a copy of rebar (without prompt)
+      - run: cd backend && mix do deps.get, compile  # get updated dependencies & compile them
+      
       # Download and cache dependencies
       - restore_cache:
           keys:
