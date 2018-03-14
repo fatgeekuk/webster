@@ -7,10 +7,10 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "test",
-    "test:backend": "cd backend && mix test",
     "build:js": "browserify frontend/scripts/index.es6 -o frontend/_dist/index.js -t [ babelify --presets [ env react ] ]",
     "watch:js": "watch 'npm run build:js' frontend/scripts/",
+    "copy:staticjs": "cp -r frontend/scripts/static/* frontend/_dist",
+    "watch:staticjs": "watch 'npm run copy:staticjs' frontend/scripts/static/",
     "build:css": "node-sass frontend/styles/index.scss -o frontend/_dist",
     "watch:css": "watch 'npm run build:css' frontend/styles/",
     "build:html": "jade frontend/html/index.jade -o frontend/_dist",
@@ -19,8 +19,10 @@
     "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'",
     "serve": "serve frontend/_dist",
     "start:backend": "cd backend && mix phx.server",
-    "start": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js' 'npm run start:backend'",
-    "frontend:upload": "npm run build && node scripts/s3_upload.js"
+    "start": "parallelshell 'npm run serve' 'npm run watch:staticjs' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js' 'npm run start:backend'",
+    "frontend:upload": "npm run build && node scripts/s3_upload.js",
+    "test:backend": "cd backend && mix test",
+    "test": "npm run test:backend"
   },
   "keywords": [
     "music",

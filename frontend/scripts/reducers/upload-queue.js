@@ -5,8 +5,6 @@ import { some, find, assign } from 'lodash';
 import FileUpload from '../models/file_upload';
 
 function alreadyHas(list, file) {
-
-  console.log('already ', list, file);
   return some(list, {name: file.name});
 }
 
