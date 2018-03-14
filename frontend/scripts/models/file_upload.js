@@ -1,4 +1,4 @@
-import { uuidv4 } from '../utils';
+import { uuidv4, backendConnection } from '../utils';
 import { delay, forEach } from 'lodash';
 import { uploadTokenReceived, uploadProgressReceived } from '../events/file-upload'
 import { backend } from '../config';
@@ -16,6 +16,14 @@ class FileUpload {
 
     if (progress == 0.0)
       delay(this.requestUploadToken.bind(this), 10);
+
+    if (progress == 1)
+      delay(this.reportUploadComplete.bind(this), 10);
+  }
+
+  reportUploadComplete() {
+    console.log('upload completed');
+    backendConnection.sendMessage();
   }
 
   receiveUploadToken(key) {
