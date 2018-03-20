@@ -37,7 +37,7 @@
     "babelify": "latest",
     "browserify": "latest",
     "jade": "latest",
-    "jest": "^23.0.0-alpha.0",
+    "jest": "latest",
     "jquery": "latest",
     "lodash": "latest",
     "node-sass": "latest",
