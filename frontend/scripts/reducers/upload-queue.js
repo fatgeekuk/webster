@@ -6,18 +6,17 @@ import FileUpload from '../models/file_upload';
 
 function alreadyHas(list, file) {
   return some(list, {name: file.name});
-}
+};
 
 function fileUploadFromId(list, id) {
   console.log('looking for key', id, ' in ', list);
   return list[id];
-}
+};
 
-const uploadQueue = (state = {}, action) => {
+function uploadQueue(state = {}, action) {
   let fileUpload;
   let newState;
 
-  console.log('upload queue received event', action);
   switch (action.type) {
     case UPLOAD_TOKEN_RECEIVED:
       fileUpload = fileUploadFromId(state, action.id);
@@ -50,6 +49,6 @@ const uploadQueue = (state = {}, action) => {
     default:
       return state
   }
-}
+};
 
 export default uploadQueue;

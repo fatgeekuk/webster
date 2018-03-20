@@ -22,7 +22,8 @@
     "start": "parallelshell 'npm run serve' 'npm run watch:staticjs' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js' 'npm run start:backend'",
     "frontend:upload": "npm run build && node scripts/s3_upload.js",
     "test:backend": "cd backend && mix test",
-    "test": "npm run test:backend"
+    "test:frontend": "jest --roots ./frontend/scripts",
+    "test": "npm run test:backend && npm run test:frontend"
   },
   "keywords": [
     "music",
@@ -30,10 +31,14 @@
     "s3"
   ],
   "devDependencies": {
+    "@babel/preset-env": "^7.0.0-beta.42",
     "aws-sdk": "2.3.7",
+    "babel-jest": "^23.0.0-alpha.0",
     "babelify": "latest",
     "browserify": "latest",
     "jade": "latest",
+    "jest": "latest",
+    "jquery": "latest",
     "lodash": "latest",
     "node-sass": "latest",
     "parallelshell": "latest",
@@ -42,8 +47,7 @@
     "redux": "^3.7.2",
     "s3": "latest",
     "serve": "latest",
-    "watch": "latest",
-    "jquery": "latest"
+    "watch": "latest"
   },
   "author": "Peter R Morris",
   "license": "ISC",
