@@ -22,8 +22,10 @@
     "start": "parallelshell 'npm run serve' 'npm run watch:staticjs' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js' 'npm run start:backend'",
     "frontend:upload": "npm run build && node scripts/s3_upload.js",
     "test:backend": "cd backend && mix test",
-    "test:frontend": "jest --roots ./frontend/scripts",
-    "test": "npm run test:backend && npm run test:frontend"
+    "test:frontend": "jest --coverage --roots ./frontend/scripts",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:frontend:ci": "jest --coverage --roots ./frontend/scripts && cp -r coverage $CIRCLE_ARTIFACTS",
+    "test:ci": "npm run test:frontend:ci"
   },
   "keywords": [
     "music",

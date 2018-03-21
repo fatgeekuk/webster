@@ -4,4 +4,4 @@ node_modules
 *.deb
 AWS*
 frontend/_dist/*
-
+coverage
