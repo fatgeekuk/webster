@@ -24,7 +24,7 @@
     "test:backend": "cd backend && mix test",
     "test:frontend": "jest --coverage --roots ./frontend/scripts",
     "test": "npm run test:backend && npm run test:frontend",
-    "test:frontend:ci": "jest --coverage --roots ./frontend/scripts && echo $CIRCLE_ARTIFACTS && cp -r coverage $CIRCLE_ARTIFACTS",
+    "test:frontend:ci": "jest --coverage --coverageDirectory /tmp/coverage --roots ./frontend/scripts",
     "test:ci": "npm run test:frontend:ci"
   },
   "keywords": [
