@@ -10,7 +10,8 @@ defmodule Backend.Mixfile do
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: Coverex.Task, output: "/tmp/coverage/backend"]
     ]
   end
 
@@ -39,6 +40,7 @@ defmodule Backend.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:coverex, "~> 1.4.10", only: :test},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:timex, "~> 3.1"},

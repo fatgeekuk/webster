@@ -5,3 +5,4 @@ node_modules
 AWS*
 frontend/_dist/*
 coverage
+backend/cover
