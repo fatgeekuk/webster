@@ -25,7 +25,7 @@
     "test:frontend": "jest --coverage --roots ./frontend/scripts",
     "test": "npm run test:backend && npm run test:frontend",
     "test:backend:ci": "cd backend && mix test --cover",
-    "test:frontend:ci": "jest --coverage --coverageDirectory /tmp/coverage/frontend --roots ./frontend/scripts",
+    "test:frontend:ci": "cd frontend && jest --coverage --coverageDirectory /tmp/coverage/frontend ",
     "test:ci": "npm run test:frontend:ci && np run test:backend:ci"
   },
   "keywords": [
