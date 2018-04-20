@@ -51,4 +51,4 @@ function uploadQueue(state = {}, action) {
   }
 };
 
-export default uploadQueue;
+export { uploadQueue };

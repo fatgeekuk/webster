@@ -55,7 +55,6 @@ class FileUpload {
   uploadFile() {
     let formData = new FormData();
     let id=this.id;
-
     forEach(this.response.params, function(value, key){ 
       formData.append(key, value);
     });

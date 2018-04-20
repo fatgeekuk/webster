@@ -1,4 +1,4 @@
-import uploadQueue from './upload-queue';
+import { uploadQueue } from './upload-queue';
 
 describe('upload-queue reducer', () => {
   it('should return the initial state', () => {
@@ -46,4 +46,4 @@ describe('upload-queue reducer', () => {
   //     }
   //   ])
   // })
-})
+});

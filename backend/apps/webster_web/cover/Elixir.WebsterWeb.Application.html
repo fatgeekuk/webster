@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>cover/Elixir.WebsterWeb.Application.html</title>
+</head><body style='background-color: white; color: black'>
+<pre>
+File generated from /home/peterm/Work/personal/webster/backend/apps/webster_web/lib/webster_web/application.ex by COVER 2018-04-05 at 20:05:24
+
+****************************************************************************
+
+        |  defmodule WebsterWeb.Application do
+        |    use Application
+        |  
+        |    # See https://hexdocs.pm/elixir/Application.html
+        |    # for more information on OTP Applications
+        |    def start(_type, _args) do
+        |      import Supervisor.Spec
+        |  
+        |      # Define workers and child supervisors to be supervised
+     1..|      children = [
+        |        # Start the endpoint when the application starts
+        |        supervisor(WebsterWebWeb.Endpoint, []),
+        |        # Start your own worker by calling: WebsterWeb.Worker.start_link(arg1, arg2, arg3)
+        |        # worker(WebsterWeb.Worker, [arg1, arg2, arg3]),
+        |      ]
+        |  
+        |      # See https://hexdocs.pm/elixir/Supervisor.html
+        |      # for other strategies and supported options
+     1..|      opts = [strategy: :one_for_one, name: WebsterWeb.Supervisor]
+     1..|      Supervisor.start_link(children, opts)
+        |    end
+        |  
+        |    # Tell Phoenix to update the endpoint configuration
+        |    # whenever the application is updated.
+        |    def config_change(changed, _new, removed) do
+<font color=red>     0..|      WebsterWebWeb.Endpoint.config_change(changed, removed)</font>
+        |      :ok
+        |    end
+        |  end
+</pre>
+</body>
+</html>

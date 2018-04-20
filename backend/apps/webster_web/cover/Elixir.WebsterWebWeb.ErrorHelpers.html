@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>cover/Elixir.WebsterWebWeb.ErrorHelpers.html</title>
+</head><body style='background-color: white; color: black'>
+<pre>
+File generated from /home/peterm/Work/personal/webster/backend/apps/webster_web/lib/webster_web_web/views/error_helpers.ex by COVER 2018-04-05 at 20:05:24
+
+****************************************************************************
+
+        |  defmodule WebsterWebWeb.ErrorHelpers do
+        |    @moduledoc """
+        |    Conveniences for translating and building error messages.
+        |    """
+        |  
+        |    use Phoenix.HTML
+        |  
+        |    @doc """
+        |    Generates tag for inlined form input errors.
+        |    """
+        |    def error_tag(form, field) do
+<font color=red>     0..|      Enum.map(Keyword.get_values(form.errors, field), fn (error) -&gt;</font>
+<font color=red>     0..|        content_tag :span, translate_error(error), class: "help-block"</font>
+        |      end)
+        |    end
+        |  
+        |    @doc """
+        |    Translates an error message using gettext.
+        |    """
+        |    def translate_error({msg, opts}) do
+        |      # When using gettext, we typically pass the strings we want
+        |      # to translate as a static argument:
+        |      #
+        |      #     # Translate "is invalid" in the "errors" domain
+        |      #     dgettext "errors", "is invalid"
+        |      #
+        |      #     # Translate the number of files with plural rules
+        |      #     dngettext "errors", "1 file", "%{count} files", count
+        |      #
+        |      # Because the error messages we show in our forms and APIs
+        |      # are defined inside Ecto, we need to translate them dynamically.
+        |      # This requires us to call the Gettext module passing our gettext
+        |      # backend as first argument.
+        |      #
+        |      # Note we use the "errors" domain, which means translations
+        |      # should be written to the errors.po file. The :count option is
+        |      # set by Ecto and indicates we should also apply plural rules.
+<font color=red>     0..|      if count = opts[:count] do</font>
+<font color=red>     0..|        Gettext.dngettext(WebsterWebWeb.Gettext, "errors", msg, msg, count, opts)</font>
+        |      else
+<font color=red>     0..|        Gettext.dgettext(WebsterWebWeb.Gettext, "errors", msg, opts)</font>
+        |      end
+        |    end
+        |  end
+</pre>
+</body>
+</html>
