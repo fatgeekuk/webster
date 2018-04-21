@@ -22,7 +22,6 @@ defmodule S3DirectUploaderTest do
       }
     }
 
-    assert S3DirectUploader.generate_packet(file_name, mime_type, tick) == expected_packet
-  
+    assert S3DirectUploader.generate_packet(file_name, mime_type, tick) == expected_packet  
   end
 end
