@@ -51,19 +51,19 @@ defmodule S3DirectUploader do
   end
 
   defp aws_region() do
-    System.get_env("S3_REGION")
+    Application.get_env(:webster_server, :s3_region)
   end
 
   defp aws_secret do
-    System.get_env("MEDIA_SECRET_ACCESS_KEY")
+    Application.get_env(:webster_server, :s3_media_secret_key)
   end
   
   defp aws_access_key do
-    System.get_env("MEDIA_ACCESS_KEY_ID")
+    Application.get_env(:webster_server, :s3_media_access_key)
   end
   
   defp aws_bucket() do
-    System.get_env("S3_MEDIA_BUCKET")
+    Application.get_env(:webster_server, :s3_media_bucket)
   end
 
   defp endpoint() do
