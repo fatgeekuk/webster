@@ -17,7 +17,8 @@ defmodule WebsterUmbrella.Mixfile do
   # Run "mix help deps" for examples and options.
   defp deps do
     [
-      {:coverex, "~> 1.4.10", only: :test}
+      {:coverex, "~> 1.4.10", only: :test},
+      {:ssl_verify_fun, "~> 1.1"}
     ]
   end
 end
