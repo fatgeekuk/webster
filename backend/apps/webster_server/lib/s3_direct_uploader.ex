@@ -23,6 +23,7 @@ defmodule S3DirectUploader do
   defined within the tests folder
   
   """
+
   def generate_packet(file_name, mime_type, tick \\ Timex.now) do
     policy = policy(file_name, mime_type, tick)
     signing_key = signing_key(tick);

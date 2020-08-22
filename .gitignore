@@ -6,3 +6,4 @@ AWS*
 frontend/_dist/*
 coverage
 backend/cover
+s3-info

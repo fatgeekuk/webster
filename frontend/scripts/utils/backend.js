@@ -1,7 +1,7 @@
 import { Socket } from '../static/phoenix';
 
 const backend = function() {
-  const socket = new Socket("ws://localhost:4000/socket", {params: {userToken: "123"}});
+  const socket = new Socket("ws://backend:4000/socket", {params: {userToken: "123"}});
 
   socket.connect();
 

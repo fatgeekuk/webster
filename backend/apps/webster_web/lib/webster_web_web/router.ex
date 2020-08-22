@@ -2,6 +2,7 @@ defmodule WebsterWebWeb.Router do
   use WebsterWebWeb, :router
 
   pipeline :api do
+    plug CORSPlug, origin: "http://frontend:5000"
     plug :accepts, ["json"]
   end
 

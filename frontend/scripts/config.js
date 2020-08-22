@@ -1,4 +1,4 @@
-const backend = 'http://localhost:4000';
+const backend = 'http://backend:4000';
 
 export {
   backend
