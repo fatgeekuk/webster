@@ -45,7 +45,7 @@
     "jquery": "^3.5.1",
     "lodash": "^4.17.20",
     "mime": "~1.4",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "parallelshell": "3.0.1",
     "pug": "^3.0.0",
     "pug-cli": "latest",
