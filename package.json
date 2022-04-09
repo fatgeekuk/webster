@@ -63,7 +63,7 @@
     "@babel/core": "latest",
     "@babel/preset-env": "latest",
     "@babel/preset-react": "latest",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "react-redux": "latest"
   },
   "jest": {
